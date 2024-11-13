@@ -1,0 +1,16 @@
+Instructions to set up the server for my lovely India
+
+Set Up:
+1. $ clone git repository (it's might give you less trouble if you just clone it)
+2. $ npm install
+2. Go to Service Account on Google Cloud Platform and Create an API Key
+	a. Go to IAM Admin
+	b. Go to Keys
+	c. Add Key (make sure it's under My First Project) and download the JSON file
+3. Create an Environment Variable for API Key
+	a. Open your MAC terminal or do it in VS Code terminal **If its giving you trouble, add the environment variable in your settings.json file in VS Code**
+	b. $ export GOOGLE_APPLICATION_CREDENTIALS="filepath/to/your_API_Key)
+	c. Double check that the Env variable was created; create a test.js file and copy in console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS); then in your terminal $ node test.js ;If it returns the correct filepath to your APIkey.JSON file, then you're good.
+4. In node.js, change the filepath of the audio to wherever the audio is stored on the computer. Or download a new audio and test it. Just make sure to update the filepath and use double slashes if you're getting trouble. Ex) "homeDir\\myMP3File.mp3"
+5. You are all set up! Run from project terminal: $ npm start
+6. If it runs correctly, you should see the Speech-to-Text in your terminal. View the backend site on http:\\localhost:3000 
