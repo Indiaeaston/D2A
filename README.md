@@ -1,8 +1,8 @@
-# Senior Capstone Project by Morgan Lee, India Easton, Brooklynn Fergerson, and Sky Brumfield.
+# Senior Capstone Project by Morgan Lee, India Easton, Brooklynn Fergerson, and Sky Brumfield
 
 The primary objective of our website is to facilitate seamless, real-time communication between English-speaking healthcare providers and Spanish-speaking patients. By enabling live spoken translation from English to Spanish (and vice versa), we aim to eliminate the need for a third-party interpreter, thus fostering a more direct, personal interaction. This approach is precious in medical environments, where clear communication can improve patient outcomes, comfort, and overall experience.
 
-Our primary users will be:
+## Our primary users will be:
 - Spanish-speaking patients who may have limited proficiency in English.
 - Healthcare providers (doctors, nurses, administrative staff) who require a reliable tool for immediate translation without needing fluency in Spanish.
 - Medical office staff responsible for patient intake, scheduling, and general communication tasks.
