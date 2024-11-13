@@ -1,6 +1,5 @@
 Instructions to set up the server for my lovely India
 
-Set Up:
 1. $ clone git repository (It might give you less trouble if you clone it)
 2. $ npm install
 2. Go to Service Account on Google Cloud Platform and Create an API Key
