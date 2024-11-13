@@ -1,7 +1,7 @@
 Instructions to set up the server for my lovely India
 
 Set Up:
-1. $ clone git repository (it's might give you less trouble if you just clone it)
+1. $ clone git repository (It might give you less trouble if you clone it)
 2. $ npm install
 2. Go to Service Account on Google Cloud Platform and Create an API Key
 	a. Go to IAM Admin
@@ -14,3 +14,7 @@ Set Up:
 4. In node.js, change the filepath of the audio to wherever the audio is stored on the computer. Or download a new audio and test it. Just make sure to update the filepath and use double slashes if you're getting trouble. Ex) "homeDir\\myMP3File.mp3"
 5. You are all set up! Run from project terminal: $ npm start
 6. If it runs correctly, you should see the Speech-to-Text in your terminal. View the backend site on http:\\localhost:3000 
+
+Links:
+https://www.restack.io/p/speech-to-text-knowledge-google-cloud-nodejs-cat-ai
+https://console.cloud.google.com/iam-admin/iam?project=metal-clone-441602-f3
