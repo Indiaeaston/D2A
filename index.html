@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedTrans: Real-Time Translation for Healthcare</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <img src="img/Med Trans Logo.png" class="img-fluid" alt="MedTrans Logo">
+            <p>Real-Time Translation for English-Spanish Communication in Healthcare</p>
+        </div>
+    </header>
+
+    <main>
+         <!-- Navigation Bar -->
+         <div class="topnav">
+            <a href="#home-title">Home</a>
+            <a href="#service-title">Services</a>
+            <a href="#contact-title">Contact</a>
+            <a href="#about-title">About</a>
+        </div>
+        
+        <div class="patient-info" style="display: flex; align-items: flex-start; gap: 20px;">
+            <!-- Patient Photo -->
+            <div class="patient-photo" style="flex: 1; margin-top: 50px;">
+                <img src="img/IMG_8080.png" id="patient-photo" style="border: 2px solid red; max-width: 100%; height: auto;">
+            </div>
+
+            <!-- Description and Get Started Button -->
+            <div class="description" style="flex: 2; margin-top: 50px; font-family: Calibri, sans-serif;">
+                <h3 id="how-it-works-title">How MedTrans Works</h3>
+                <p id="how-it-works-description">MedTrans provides real-time spoken translation between English and Spanish. It helps healthcare providers and patients communicate clearly, ensuring better healthcare outcomes and smoother interactions.</p>
+                <a href="#Spanish">
+                    <button id="get-started-btn">Get Started</button>
+                </a>
+            </div>
+        </div>
+
+        <section class="translation-box">
+            <h2 id= "how-to-begin-title">How To Begin</h2>
+            <div class="language-selector">
+                <button id="Spanish" onclick="toggleTranslation('es')">Spanish</button>
+                <button id="English" onclick="toggleTranslation('en')">English</button>
+            </div>
+
+            <div class="live-translation">
+                <p id="source-language-text">To use the Real-Time Translation feature, you can either type text into the input box or click the "Speak" button to provide a voice input. Once you're ready, click the "Translate" button to see the translation.</p>
+                <p id="translated-text">Your translation will appear here...</p>
+            </div>
+        </section>
+
+        <!-- Translation Box Section -->
+        <section class="real-time-translation">
+            <h3>Real-Time Translation</h3>
+            <div class="language-box" style="display: flex; gap: 20px;">
+                <!-- English Box -->
+                <div class="language-input-box" style="flex: 1; padding: 20px; border: 1px solid #f13838; border-radius: 10px;">
+                    <h4>English</h4>
+                    <textarea id="english-text" placeholder="Type something in English..."></textarea>
+                    <button onclick="translateToSpanish()">Translate to Spanish</button>
+                    <button class="mic-button" onclick="startSpeechRecognition('en')">🎤 Speak</button>
+                </div>
+
+                <!-- Spanish Box -->
+                <div class="language-input-box" style="flex: 1; padding: 20px; border: 1px solid #f13838; border-radius: 10px;">
+                    <h4>Español</h4>
+                    <textarea id="spanish-text" placeholder="Escribe algo en español..."></textarea>
+                    <button onclick="translateToEnglish()">Traducir a Inglés</button>
+                    <button class="mic-button" onclick="startSpeechRecognition('es')">🎤 Hablar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="info">
+            <h3 id="about-title">About</h3>
+            <p id="about-description">MedTrans provides fast and accurate real-time translation services, helping individuals and healthcare entities break language barriers effortlessly.</p>
+            <h3 id="service-title">Service</h3>
+            <p id="service-description">Real-time text and voice translation.</p>
+            <h3 id="contact-title">Contract</h3>
+            <p id="contact-description">For inquiries or technical support please reach out to us at MedTrans.org or at 1-800-788-9878</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container" style="background-color:rgb(245, 9, 9); color: white;">
+            <p>&copy; 2024 MedTrans. All rights reserved.</p>
+            <p>Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        let recognition;
+
+        if ('webkitSpeechRecognition' in window) {
+            recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US'; // Default language
+        } else {
+            alert("Speech recognition not supported in this browser.");
+        }
+
+        // Switch between translation modes (English to Spanish or Spanish to English)
+        function toggleTranslation(language) {
+            // Update text based on selected language
+            if (language === 'en') {
+                document.getElementById('source-language-text').textContent = "To use the Real-Time Translation feature, you can either type text into the input box or click the \"Speak\" button to provide a voice input. Once you're ready, click the \"Translate\" button to see the translation.";
+                document.getElementById('translated-text').textContent = "Your translation will appear here...";
+                document.getElementById('how-it-works-title').textContent = "How MedTrans Works";
+                document.getElementById('how-it-works-description').textContent = "MedTrans provides real-time spoken translation between English and Spanish. It helps healthcare providers and patients communicate clearly, ensuring better healthcare outcomes and smoother interactions.";
+                document.getElementById("how-to-begin-title").textContent = "How To Begin";
+                // Update About, Service, Contracts text in English
+                 document.getElementById('about-title').textContent = "About";
+                 document.getElementById('about-description').textContent = "MedTrans provides fast and accurate real-time translation services, helping individuals and healthcare entities break language barriers effortlessly.";
+                 document.getElementById('service-title').textContent = "Service";
+                 document.getElementById('service-description').textContent = "Real-time text and voice translation.";
+                 document.getElementById('contact-title').textContent = "Contract";
+                 document.getElementById('contact-description').textContent = "For inquiries or technical support please reach out to us at MedTrans.org or at 1-800-788-9878";
+           
+           
+            } else {
+                document.getElementById('source-language-text').textContent = "Para usar la función de Traducción en Tiempo Real, puedes escribir texto en el cuadro de entrada o hacer clic en el botón \"Hablar\" para proporcionar una entrada de voz. Una vez que estés listo, haz clic en el botón \"Traducir\" para ver la traducción.";
+                document.getElementById('translated-text').textContent = "Tu traducción aparecerá aquí...";
+                document.getElementById('how-it-works-title').textContent = "Cómo funciona MedTrans";
+                document.getElementById('how-it-works-description').textContent = "MedTrans ofrece traducción en tiempo real entre inglés y español. Ayuda a los proveedores de atención médica y a los pacientes a comunicarse claramente, lo que garantiza mejores resultados en la atención médica y una interacción más fluida.";
+                document.getElementById("how-to-begin-title").textContent = "Cómo empezar";
+                // Update About, Service, Contracts text in Spanish
+                document.getElementById('about-title').textContent = "Acerca de";
+                document.getElementById('about-description').textContent = "MedTrans proporciona servicios de traducción en tiempo real rápidos y precisos, ayudando a las personas y entidades de atención médica a romper barreras idiomáticas sin esfuerzo.";
+                document.getElementById('service-title').textContent = "Servicio";
+                document.getElementById('service-description').textContent = "Traducción en tiempo real de texto y voz.";
+                document.getElementById('contact-title').textContent = "Contrato";
+                document.getElementById('contact-description').textContent = "Para consultas o soporte técnico, comuníquese con nosotros en MedTrans.org o al 1-800-788-9878";
+            
+            
+            }
+
+            // Update speech recognition language
+            recognition.lang = language === 'en' ? 'en-US' : 'es-ES';
+        }
+
+        // Start speech recognition for the selected language
+        function startSpeechRecognition(language) {
+            recognition.start();
+
+            recognition.onresult = function (event) {
+                let speechToText = event.results[0][0].transcript;
+                if (language === 'en') {
+                    document.getElementById('english-text').value = speechToText;
+                    translateToSpanish(); // Trigger translation to Spanish
+                } else {
+                    document.getElementById('spanish-text').value = speechToText;
+                    translateToEnglish(); // Trigger translation to English
+                }
+            };
+
+            recognition.onerror = function (event) {
+                console.error('Speech recognition error:', event.error);
+            };
+        }
+
+        // Translate English text to Spanish
+        function translateToSpanish() {
+            let englishText = document.getElementById('english-text').value;
+            let translatedText = "Traducido: " + englishText; // Simulated translation
+            document.getElementById('spanish-text').value = translatedText;
+        }
+
+        // Translate Spanish text to English 
+        function translateToEnglish() {
+            let spanishText = document.getElementById('spanish-text').value;
+            let translatedText = "Translated: " + spanishText; // Simulated translation
+            document.getElementById('english-text').value = translatedText;
+        }
+    </script>
+</body>
+
+</html>

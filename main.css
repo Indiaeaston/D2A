@@ -1,0 +1,77 @@
+
+body {
+    font-family: Calibri, sans-serif;
+    
+}
+header {
+    background-color: rgb(60, 159, 240); /* Matches navigation bar color */
+    color: rgb(240, 9, 9); /* Text color */
+    font-family: Arial;
+    font-weight: bold;
+    padding: 20px 0; /* Adjust padding to prevent excess space */
+    text-align: center;
+}
+
+
+
+/* Top Navigation */
+.topnav {
+    background: rgb(245, 9, 9);
+    font-family: Arial;
+    display: flex;
+    padding: 10px;
+     margin: 0; /* Removes any extra space */
+  }
+
+
+
+
+.topnav a {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+.topnav a:hover {
+    text-decoration: underline;
+}
+
+.topnav a.active {
+    text-decoration: underline;
+}
+
+/* Images */
+.img-fluid {
+    max-width: 300px;
+    height: auto;
+}
+
+
+
+header h1 {
+    font-size: 30px;
+}
+
+/* Buttons */
+button {
+    font-size: 15px;
+    background-color: rgb(240, 9, 9);
+    color: white;
+    padding: 12px 24px;
+    font-family: Arial;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+  
+    
+  
+}
