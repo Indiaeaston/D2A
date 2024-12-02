@@ -2,15 +2,16 @@
   "name": "d2a",
   "version": "3.0.0",
   "description": "The primary objective of our website is to facilitate seamless, real-time communication between English-speaking healthcare providers and Spanish-speaking patients.",
-  "main": "src/node.js",
+  "main": "src/app.js",
   "scripts": {
-    "start": "node src/node.js"
+    "start": "node src/app.js"
   },
   "dependencies": {
     "@google-cloud/common": "^5.0.2",
     "@google-cloud/projectify": "^4.0.0",
     "@google-cloud/promisify": "^4.0.0",
     "@google-cloud/speech": "^6.7.0",
+    "@google-cloud/translate": "^8.5.0",
     "express": "^4.21.1"
   },
   "keywords": [],

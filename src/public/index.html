@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedTrans: Real-Time Translation for Healthcare</title>
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background-color: #d0e8fe;
+        }
+        header {
+            background-color: rgb(60, 159, 240); /* Matches navigation bar color */
+            color: rgb(240, 9, 9); /* Text color */
+            font-family: Arial;
+            font-weight: bold;
+            padding: 20px 0; /* Adjust padding to prevent excess space */
+            text-align: center;
+        }
+        .controls, .output-container{
+            margin: 20px 0;
+            padding: 10px;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+        #get-started-btn {
+            font-size: 15px;
+            background-color: rgb(240, 9, 9);
+            color: white;
+            padding: 12px 24px;
+            font-family: Arial;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        #startBtn {
+            background: #4CAF50;
+            color: white;
+        }
+        #stopBtn {
+            background: #f44336;
+            color: white;
+        }
+        button:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        .output-container {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .transcript {
+            min-height: 50px;
+            padding: 10px;
+            background-color: #f5f5f5;
+            margin: 10px 0;
+            border-radius: 3px;
+            white-space: pre-wrap;
+        }
+        .status {
+            color: #666;
+            font-style: italic;
+            margin-left: 10px;
+        }
+        h3 {
+            color: #333;
+            margin: 10px 0;
+        }
+        header h1 {
+            font-size: 30px;
+        }
+        /* Add these new styles */
+        .language-select {
+            padding: 8px 15px;
+            font-size: 16px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            display: block;
+        }
+        /* Images */
+        .img-fluid {
+            max-width: 300px;
+            height: auto;
+        }
+            /* Top Navigation */
+        .topnav {
+            background: rgb(245, 9, 9);
+            font-family: Arial;
+            display: flex;
+            padding: 10px;
+            margin: 0; /* Removes any extra space */
+        }
+        .topnav a {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin-right: 30px;
+        }
+        .topnav a:hover {
+            text-decoration: underline;
+        }
+
+        .topnav a.active {
+            text-decoration: underline;
+        }
+        .language-buttons {
+            text-align: right;
+            padding: 10px 20px;
+        }
+        .lang-btn {
+            padding: 8px 16px;
+            margin-left: 10px;
+            border: 2px solid #4CAF50;
+            background-color: white;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .lang-btn:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .lang-btn-active {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="img/medTransLogo.png" class="img-fluid" alt="MedTrans Logo">
+            <h2>MedTrans: Real-Time Translation for English-Spanish Communication in Healthcare</h2>
+        </div>
+    </header>
+    <main>
+        <!-- Navigation Bar -->
+        <div class="topnav">
+           <a href="#home-title" id="home">Home</a>
+           <a href="#translator" id="trans">Translator</a>
+           <a href="#service-title" id="services">Services</a>
+           <a href="#contact-title" id="contact">Contact</a>
+           <a href="#about-title" id="about">About</a>
+           <div class="language-buttons">
+            <button id="enButton" class="lang-btn lang-btn-active">English</button>
+            <button id="esButton" class="lang-btn">Español</button>
+           </div>
+       </div>
+       <div class="patient-info" style="display: flex; align-items: flex-start; gap: 20px;">
+           <!-- Patient Photo -->
+           <div class="patient-photo" style="flex: 1; margin-top: 50px;">
+               <img src="img/doctors.PNG" id="patient-photo" style="border: 2px solid red; max-width: 100%; height: auto;">
+           </div>
+
+           <!-- Description and Get Started Button -->
+           <div class="description" style="flex: 2; margin-top: 50px; font-family: Calibri, sans-serif;">
+               <h3 id="how-it-works-title">How MedTrans Works</h3>
+               <p id="how-it-works-description">MedTrans provides real-time spoken translation between English and Spanish. It helps healthcare providers and patients communicate clearly, ensuring better healthcare outcomes and smoother interactions.</p>
+               <a href="#Spanish">
+                   <button id="get-started-btn">Get Started</button>
+               </a>
+           </div>
+       </div>
+
+       <section class="translation-box">
+           <h2 id= "how-to-begin-title">How To Begin</h2>
+           <div class="live-translation">
+               <p id="source-language-text">To use the Real-Time Translation feature, first select your translation type: Spanish to English or English to Spanish. Then hit "Start recording" and speak into your microphone. When finished speaking, hit "Stop recording" and view your live translation.</p>
+           </div>
+       </section>
+       <!-- Translation Box Section -->
+       <section class="real-time-translation">
+            <h1 id="translator">Real-time Speech Translation</h1>
+            <div class="controls">
+                <!-- Add the language selector here -->
+                <select id="languageDirection" class="language-select">
+                    <option value="es-en">Spanish to English</option>
+                    <option value="en-es">English to Spanish</option>
+                </select>
+                
+                <button id="startBtn">Start Recording</button>
+                <button id="stopBtn" disabled>Stop Recording</button>
+                <span id="status" class="status">Not recording</span>
+            </div>
+
+            <div class="output-container">
+                <!-- These titles will update based on selected language -->
+                <h3 id="sourceLanguageTitle">Spanish (Original):</h3>
+                <div id="transcription" class="transcript"></div>
+                <h3 id="targetLanguageTitle">English (Translation):</h3>
+                <div id="translation" class="transcript"></div>
+            </div>    
+       </section>
+
+       <section class="info">
+           <h3 id="about-title">About</h3>
+           <p id="about-description">MedTrans provides fast and accurate real-time translation services, helping individuals and healthcare entities break language barriers effortlessly.</p>
+           <h3 id="service-title">Service</h3>
+           <p id="service-description">Real-time voice translation.</p>
+           <h3 id="contact-title">Contract</h3>
+           <p id="contact-description">For inquiries or technical support please reach out to us at MedTrans.org or at 1-800-788-9878</p>
+       </section>
+   </main>
+
+   <footer>
+       <div class="container" style="background-color:rgb(245, 9, 9); color: white;">
+           <p>&copy; 2024 MedTrans. All rights reserved.</p>
+           <p>Privacy Policy | Terms of Service</p>
+       </div>
+   </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
